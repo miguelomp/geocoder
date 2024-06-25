@@ -4,6 +4,9 @@
 
 ```
 ROOT_DIR=<set to a location where the database will be stored>
+POSTGRES_DB=<db name>
+POSTGRES_USER=<user name>
+POSTGRES_PASSWORD=<password>
 ```
 
 ### Deploy
