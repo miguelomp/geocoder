@@ -1,0 +1,26 @@
+name: dbs
+
+services:
+  geocoder:
+    build:
+      context: .
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}"
+      - POSTGRES_USER=${POSTGRES_USER}"
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+    volumes:
+      - ./scripts:/scripts
+      -  ${ROOT_DIR}:/var/lib/postgresql/data
+    hostname: "geocoder"
+    expose:
+      - 5432
+    labels:
+      - "var.v00=${ROOT_DIR:?ROOT_DIR not set}"
+      - "var.v01=${POSTGRES_DB:?POSTGRES_DB not set}"
+      - "var.v02=${POSTGRES_USER:?POSTGRES_USER not set}"
+      - "var.v03=${POSTGRES_PASSWORD:?POSTGRES_PASSWORD not set}"
+
+networks:
+  default:
+    name: dbs
+    external: true
