@@ -28,7 +28,7 @@ For testing the deployment/installation process, make the `step 6` from [11-geoc
 - You should be logged as root. Assign exec permissions to script, run it and wait (it can take some time).
     ```
     cd /scripts
-    chown +x 11-geocoder.sh
+    chmod +x 11-geocoder.sh
     nohup ./11-geocoder.sh &
     ```
 - Meanwhile you can monitor the proccess running:
