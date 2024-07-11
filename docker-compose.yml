@@ -2,6 +2,7 @@ name: dbs
 
 services:
   geocoder:
+    restart: always
     build:
       context: .
     environment:
