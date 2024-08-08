@@ -41,6 +41,22 @@ For testing the deployment/installation process, make the `step 6` from [11-geoc
     ALTER USER postgres WITH ENCRYPTED PASSWORD 'new_password';
     ```
 - Restart container to eliminate any temp file let by geocoder installation.
+- Log into the container shell, again, and execute these command wihtin `psql`
+    ```
+    docker exec -it -u postgres dbs-geocoder-1 psql -d geocoder
+    SELECT install_missing_indexes();
+    vacuum (analyze, verbose) tiger.addr;
+    vacuum (analyze, verbose) tiger.edges;
+    vacuum (analyze, verbose) tiger.faces;
+    vacuum (analyze, verbose) tiger.featnames;
+    vacuum (analyze, verbose) tiger.place;
+    vacuum (analyze, verbose) tiger.cousub;
+    vacuum (analyze, verbose) tiger.county;
+    vacuum (analyze, verbose) tiger.state;
+    vacuum (analyze, verbose) tiger.zip_lookup_base;
+    vacuum (analyze, verbose) tiger.zip_state;
+    vacuum (analyze, verbose) tiger.zip_state_loc;
+    ```
 
 
 
